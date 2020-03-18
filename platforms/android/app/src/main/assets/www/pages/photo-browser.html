@@ -1,0 +1,182 @@
+<template>
+    <div class="page">
+        <div class="navbar">
+            <div class="navbar-bg"></div>
+            <div class="navbar-inner sliding">
+                <div class="left">
+                    <a href="#" class="link back">
+                        <i class="icon icon-back"></i>
+                        <span class="if-not-md">Kembali</span>
+                    </a>
+                </div>
+                <div class="title">Rotibul Haddad</div>
+            </div>
+        </div>
+        <div class="page-content">
+            <div class="block block-strong">
+                <div class="row margin-bottom">
+                    <div class="col-99"><a href="#" class="button button-fill" @click="openStandaloneDark">Baca</a>
+                    </div>
+                </div>
+                <div class="row margin-bottom">
+                    <div class="col-99"><a href="#" class="button button-fill">Pengarang</a>
+                    </div>
+                </div>
+                <div class="row margin-bottom">
+                    <div class="col-99"><a href="#" class="button button-fill">Fadilah</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+<script>
+    return {
+        data: function () {
+            return {
+                photos: [
+                    {
+                        url: 'img/1.jpg',
+                    },
+                    {
+                        url: 'img/2.jpg',
+                    },
+                    {
+                        url: 'img/3.jpg',
+                    },
+                    {
+                        url: 'img/4.jpg',
+                    },
+                    {
+                        url: 'img/5.jpg',
+                    },
+                    {
+                        url: 'img/6.jpg',
+                    },
+                    {
+                        url: 'img/7.jpg',
+                    },
+                    {
+                        url: 'img/8.jpg',
+                    },
+                    {
+                        url: 'img/9.jpg',
+                    },
+                    {
+                        url: 'img/10.jpg',
+                    },
+                    {
+                        url: 'img/11.jpg',
+                    },
+                    {
+                        url: 'img/12.jpg',
+                    },
+
+                    {
+                        url: 'img/14.jpg',
+                    },
+                    {
+                        url: 'img/15.jpg',
+                    },
+                    {
+                        url: 'img/16.jpg',
+                    },
+                    {
+                        url: 'img/17.jpg',
+                    },
+                    {
+                        url: 'img/18.jpg',
+                    },
+                    {
+                        url: 'img/19.jpg',
+                    },
+                    {
+                        url: 'img/20.jpg',
+                    },
+                    {
+                        url: 'img/21.jpg',
+                    },
+                    {
+                        url: 'img/22.jpg',
+                    },
+                    {
+                        url: 'img/23.jpg',
+                    },
+                    {
+                        url: 'img/24.jpg',
+                    },
+
+                ],
+            }
+        },
+        methods: {
+            openStandalone: function () {
+                const self = this;
+                self.standalone.open();
+            },
+            openPopup: function () {
+                const self = this;
+                self.popup.open();
+            },
+            openPage: function () {
+                const self = this;
+                self.page.open();
+            },
+            openStandaloneDark: function () {
+                const self = this;
+                self.standaloneDark.open();
+            },
+            openPopupDark: function () {
+                const self = this;
+                self.popupDark.open();
+            },
+            openPageDark: function () {
+                const self = this;
+                self.pageDark.open();
+            },
+        },
+        on: {
+            pageInit: function () {
+                const self = this;
+                // Create PBs when page init
+                self.standalone = self.$app.photoBrowser.create({
+                    photos: self.photos,
+                });
+                self.popup = self.$app.photoBrowser.create({
+                    photos: self.photos,
+                    type: 'popup',
+                });
+                self.page = self.$app.photoBrowser.create({
+                    photos: self.photos,
+                    type: 'page',
+                    backLinkText: 'Back',
+                });
+                self.standaloneDark = self.$app.photoBrowser.create({
+                    photos: self.photos,
+                    theme: 'dark',
+                });
+                self.popupDark = self.$app.photoBrowser.create({
+                    photos: self.photos,
+                    type: 'popup',
+                    theme: 'dark',
+                });
+                self.pageDark = self.$app.photoBrowser.create({
+                    photos: self.photos,
+                    type: 'page',
+                    backLinkText: 'Back',
+                    theme: 'dark',
+                });
+            },
+            pageBeforeRemove: function () {
+                const self = this;
+                // Destroy PBs on page remove
+                self.standalone.destroy();
+                self.popup.destroy();
+                self.page.destroy();
+                self.standaloneDark.destroy();
+                self.popupDark.destroy();
+                self.pageDark.destroy();
+            },
+        }
+    };
+</script>
